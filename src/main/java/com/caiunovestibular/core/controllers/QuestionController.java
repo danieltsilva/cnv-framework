@@ -34,7 +34,7 @@ public class QuestionController {
 
     @GetMapping("/question/{id}")
     public QuestionBean getQuestion(@PathVariable("id") Long id) {
-        log.info("Get Question method");
+        log.info("Get Question method id={}", id);
         return examService.getQuestion(id);
     }
 
@@ -43,6 +43,13 @@ public class QuestionController {
         log.info("Get Questions method");
 
         return examService.createQuestion(question);
+    }
+
+    @DeleteMapping("/question/{id}")
+    public void deleteQuestion(@PathVariable("id") Long id) {
+        log.info("Delete Question method id={}", id);
+
+        examService.deleteQuestion(id);
     }
 
 }

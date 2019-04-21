@@ -20,7 +20,7 @@ public class ExamServiceImpl implements ExamService {
 
     @Override
     public QuestionBean createQuestion(QuestionBean question) {
-        log.info("Creating and persisting Question");
+        log.info("Service: Creating and persisting Question");
 
         Question q = new Question();
         q.setInstitution(question.getHeader());
@@ -43,7 +43,7 @@ public class ExamServiceImpl implements ExamService {
 
     @Override
     public List<QuestionBean> getAllQuestions() {
-        log.info("Get All Questions method");
+        log.info("Service: Get All Questions method");
 
         List<QuestionBean> list = new ArrayList<>();
         Iterable<Question> questions = questionRepository.findAll();
@@ -61,7 +61,7 @@ public class ExamServiceImpl implements ExamService {
 
     @Override
     public QuestionBean getQuestion(Long id) {
-        log.info("Get Question method");
+        log.info("Service: Get Question method");
 
         Optional<Question> optQuestion = questionRepository.findById(id);
         QuestionBean qb = new QuestionBean();
@@ -76,4 +76,14 @@ public class ExamServiceImpl implements ExamService {
         return qb;
     }
 
+    @Override
+    public void deleteQuestion(Long id) {
+        log.info("Service: Delete Question method");
+
+        Optional<Question> optQuestion = questionRepository.findById(id);
+
+        optQuestion.ifPresent((Question q) -> {
+            questionRepository.delete(q);
+        });
+    }
 }

@@ -9,5 +9,6 @@ public interface ExamService {
     public QuestionBean createQuestion(QuestionBean question);
     public List<QuestionBean> getAllQuestions();
     public QuestionBean getQuestion(Long id);
+    public void deleteQuestion(Long id);
 
 }
