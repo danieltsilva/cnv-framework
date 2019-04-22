@@ -77,6 +77,23 @@ public class ExamServiceImpl implements ExamService {
     }
 
     @Override
+    public QuestionBean patchQuestion(QuestionBean question, Long id) {
+        log.info("Service: Patch Question method");
+
+        Optional<Question> optQuestion = questionRepository.findById(id);
+
+        optQuestion.ifPresent((Question q) -> {
+            q.setInstitution(question.getHeader());
+            q.setStatement(question.getStatement());
+//            list.add(qb);
+            questionRepository.save(q);
+        });
+
+
+        return null;
+    }
+
+    @Override
     public void deleteQuestion(Long id) {
         log.info("Service: Delete Question method");
 

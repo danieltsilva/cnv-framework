@@ -10,5 +10,5 @@ public interface ExamService {
     public List<QuestionBean> getAllQuestions();
     public QuestionBean getQuestion(Long id);
     public void deleteQuestion(Long id);
-
+    public QuestionBean patchQuestion(QuestionBean question, Long id);
 }
